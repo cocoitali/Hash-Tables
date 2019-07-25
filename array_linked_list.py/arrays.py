@@ -2,7 +2,7 @@
 
 # Do not use any of the built in array functions for this exercise
 class array:
-    def __init__(self):
+    def __init__(self, capacity):
         self.capacity = capacity
         self.count = 0
         self.elements = [None] * capacity
@@ -10,10 +10,10 @@ class array:
 # Double the size of the given array
 def resize_array(array):
     new_capacity = array.capacity * 2  #double is the best for new capacity
-    new_elemements = [None] * new_capacity
+    new_elements = [None] * new_capacity
 
     for i in range(array.capacity):
-        new_elemements[i] = array.elements[i]
+        new_elements[i] = array.elements[i]
 
     array.elements = new_elements #updates all elements in array
     array.capacity = new_capacity #update size of array
@@ -22,7 +22,7 @@ def resize_array(array):
 # Return an element of a given array at a given index
 def array_read(array, index):
     # Throw an error if array is out of the current count
-    if index >= array.count:
+    if index >= array.count: #capacity
         print ("Error! index " + str(index) + " out of range")
         return None
     
@@ -33,7 +33,7 @@ def array_read(array, index):
 def array_insert(array, value, index):
     # Throw an error if array is out of the current count
     if index > array.count:
-        print ("Error, index " + str(index) + " out of range")
+        print ("Error, index " + str(index) + " out of range") # you can't insert when there's an empty space ie [1,2,_,3], so need to raise error, checking if index is above the count
     # Resize the array if the number of elements is over capacity
     if array.capacity <= array.count:
         resize_array(array) # this will resize the old array right here
@@ -71,10 +71,10 @@ def array_remove(array, element):
 
 # Remove the element in a given position and return it
 # Then shift every element after that occurrance to fill the gap
-def array_pop():
+def array_pop(array, index):
     # Throw an error if array is out of the current count
     if index > array.count:
-        print("Error, element "+ stri(index)+ " is out of range")
+        print("Error, index "+ stri(index)+ " is out of range")
         return None
     #what is the return value?
     return_value = array.elements[index]
@@ -100,14 +100,18 @@ def array_print(array):
 
 
 # # Testing
-# arr = array(1)
+arr = array(1)
 
-# array_insert(arr, "STRING1", 0)
-# array_print(arr)
-# array_pop(arr, 0)
-# array_print(arr)
-# array_insert(arr, "STRING1", 0)
-# array_append(arr, "STRING4")
-# array_insert(arr, "STRING2", 1)
-# array_insert(arr, "STRING3", 2)
-# array_print(arr)
+array_insert(arr, "STRING1", 0)
+array_print(arr)
+array_pop(arr, 0)
+array_print(arr)
+array_insert(arr, "STRING1", 0)
+array_append(arr, "STRING4")
+array_insert(arr, "STRING2", 1)
+array_insert(arr, "STRING3", 2)
+array_print(arr)
+print(arr.capacity)
+array_insert(arr, "STRING5", 2)
+array_print(arr)
+print(arr.capacity)
