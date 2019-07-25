@@ -15,7 +15,8 @@ class Pair:
 # '''
 class BasicHashTable:
     def __init__(self, capacity):
-        self.capacity = capacityself.count = 0
+        self.capacity = capacity
+        self.count = 0
         self.elements = [None] * capacity
 
 
@@ -25,10 +26,8 @@ class BasicHashTable:
 # '''
 def hash(string, max):
     hash = 5381
-
     for character in string:
         hash = ((hash << 5) + hash) + ord(character)
-
     return hash % max
 
 # '''
@@ -37,7 +36,10 @@ def hash(string, max):
 # If you are overwriting a value with a different key, print a warning.
 # '''
 def hash_table_insert(hash_table, key, value):
-    pass
+    index = hash(key, hash_table.capacity )
+    print(index)
+
+    hash_table.elements[index] = value
 
 
 # '''
@@ -62,7 +64,7 @@ def Testing():
     ht = BasicHashTable(16)
 
     hash_table_insert(ht, "line", "Here today...\n")
-
+    print(ht.elements)
     hash_table_remove(ht, "line")
 
     if hash_table_retrieve(ht, "line") is None:
