@@ -49,13 +49,26 @@ def array_insert(array, value, index):
     array.count += 1
 
 # Add an element to the end of the given array
-def array_append():
-
+def array_append(array, value):
     # Hint, this can be done with one line of code
     # (Without using a built in function)
+    array_insert(array, value, array.count)
 
-    # Your code here
-    pass
+# Remove the first occurence of the given element from the array
+# Throw an error if the value is not found
+def array_remove(array, element):
+    for i in range(array.count):
+        if removed:
+            array.elements[i-1] == array.elements[i]
+        elif array.elements[i] == element:
+            removed = True
+        
+    if removed:
+        array.count -= 1
+        array.elements[array.count] = None
+    else:
+        print("Error, element" + str(element) + " not found")
+
 
 
 # Remove the first occurence of the given element from the array
