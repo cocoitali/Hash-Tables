@@ -28,18 +28,25 @@ def array_read(array, index):
     
     return array.elements[index] # going to cheat a little and use a built in function here
 
+
 # Insert an element in a given array at a given index
-def array_insert():
+def array_insert(array, value, index):
     # Throw an error if array is out of the current count
-
+    if index > array.count:
+        print ("Error, index " + str(index) + " out of range")
     # Resize the array if the number of elements is over capacity
+    if array.capacity <= array.count:
+        resize_array(array) # this will resize the old array right here
 
-    # Move the elements to create a space at 'index'
-    # Think about where to start!
+    # Move the elements to create a space at 'index' 
+    # # Think about where to start!
+    for i in range(array.count, index, - 1):
+        array.elements[i] = array.elements[i-1] # shifts elements backward
+   
 
     # Add the new element to the array and update the count
-    pass
-
+    array.elements[index] = value
+    array.count += 1
 
 # Add an element to the end of the given array
 def array_append():
