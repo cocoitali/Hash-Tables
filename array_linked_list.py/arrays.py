@@ -69,21 +69,22 @@ def array_remove(array, element):
     else:
         print("Error, element" + str(element) + " not found")
 
-
-
-# Remove the first occurence of the given element from the array
-# Throw an error if the value is not found
-def array_remove():
-    # Your code here
-    pass
-
-
 # Remove the element in a given position and return it
 # Then shift every element after that occurrance to fill the gap
 def array_pop():
     # Throw an error if array is out of the current count
-    # Your code here
-    pass
+    if index > array.count:
+        print("Error, element "+ stri(index)+ " is out of range")
+        return None
+    #what is the return value?
+    return_value = array.elements[index]
+
+    for i in range(index + 1, array.count):
+        array.elements[i - 1] = array.element[i]
+
+    array.count -= 1
+    array.elements[array.count] = None
+    return return_value
 
 
 # Utility to print an array
