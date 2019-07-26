@@ -10,7 +10,7 @@ class Pair:
         self.next = None
 # '''
 # Basic hash table
-# Fill this in.  All storage values should be initialized to None
+# All storage values should be initialized to None
 # '''
 class BasicHashTable:
     def __init__(self, capacity):
@@ -18,8 +18,6 @@ class BasicHashTable:
         self.count = 0
         self.storage = [None] * capacity
 
-# '''
-# Fill this in.
 # Research and implement the djb2 hash function
 # '''
 def hash(string, max):
@@ -28,9 +26,6 @@ def hash(string, max):
         hash = ((hash << 5) + hash) + ord(character)
     return hash % max
 
-# '''
-# Fill this in.
-
 # If you are overwriting a value with a different key, print a warning.
 # '''
 def hash_table_insert(hash_table, key, value):
@@ -38,7 +33,6 @@ def hash_table_insert(hash_table, key, value):
     
     current_pair = hash_table.storage[index]
 
-    # last_pair = None
     while current_pair is not None and current_pair.key != key: #if none, means we did not find a collision
         current_pair = current_pair.next
 
@@ -49,9 +43,6 @@ def hash_table_insert(hash_table, key, value):
     else:
         current_pair.calue = value
 
-# '''
-# Fill this in.
-
 # If you try to remove a value that isn't there, print a warning.
 # '''
 def hash_table_remove(hash_table, key):
@@ -60,9 +51,6 @@ def hash_table_remove(hash_table, key):
     if hash_table.storage[index] is None:
         print ("Warnign: removing non-existent key" + key)
     has_table.storage[index] = None
-
-# '''
-# Fill this in.
 
 # Should return None if the key is not found.
 # '''
