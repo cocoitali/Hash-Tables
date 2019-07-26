@@ -40,7 +40,6 @@ def hash_table_insert(hash_table, key, value):
 
     # last_pair = None
     while current_pair is not None and current_pair.key != key: #if none, means we did not find a collision
-        last_pair = current_pair
         current_pair = current_pair.next
 
     if current_pair is None:
