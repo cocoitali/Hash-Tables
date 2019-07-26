@@ -38,7 +38,7 @@ def hash_table_insert(hash_table, key, value):
     
     current_pair = hash_table.storage[index]
 
-    last_pair = None
+    # last_pair = None
     while current_pair is not None and current_pair.key != key: #if none, means we did not find a collision
         last_pair = current_pair
         current_pair = current_pair.next
@@ -47,11 +47,8 @@ def hash_table_insert(hash_table, key, value):
         new_pair = Pair(key, value)
         new_pair.next = hash_table.storage[index]
         hash_table.storage[index]= new_pair
-
-
-    if hash_table.storage[index] is not None:
-        print("Warning: overwriting " + str(hash_table.elements[index].key))
-    hash_table.storage[index] = pair
+    else:
+        current_pair.calue = value
 
 # '''
 # Fill this in.
@@ -64,7 +61,7 @@ def hash_table_remove(hash_table, key):
     if hash_table.storage[index] is None:
         print ("Warnign: removing non-existent key" + key)
     has_table.storage[index] = None
-    
+
 # '''
 # Fill this in.
 
@@ -82,17 +79,19 @@ def Testing():
     ht = BasicHashTable(16)
 
     hash_table_insert(ht, "a", "VALUE FOR A")
+    hash_table_insert(ht, "a", "NEW VALUE FOR A")
     hash_table_insert(ht, "q", "VALUE FOR Q")
-    print(hash_table_retrieve(ht, "a"))
+    print(hash_table_retrieve(ht, "a").value)
+    print(hash_table_retrieve(ht, "q").value)
 
-    hash_table_insert(ht, "line", "Here today...\n")
-    print(ht.elements)
-    hash_table_remove(ht, "line")
+    # hash_table_insert(ht, "line", "Here today...\n")
+    # print(ht.elements)
+    # hash_table_remove(ht, "line")
 
-    if hash_table_retrieve(ht, "line") is None:
-        print("...gone tomorrow (success!)")
-    else:
-        print("ERROR:  STILL HERE")
+    # if hash_table_retrieve(ht, "line") is None:
+    #     print("...gone tomorrow (success!)")
+    # else:
+    #     print("ERROR:  STILL HERE")
 
 
-
+Testing()
